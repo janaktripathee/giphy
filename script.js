@@ -7,7 +7,6 @@ $(document).ready(function() {
     "hamster", "dog", "serval", "rabbit", "frog"
   ];
 
-  // function to make buttons and add to page
   function populateButtons(arrayToUse, classToAdd, areaToAddTo) {
     $(areaToAddTo).empty();
 
@@ -27,7 +26,7 @@ $(document).ready(function() {
     $(this).addClass("active");
 
     var type = $(this).attr("data-type");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=27S1z4Jv5SsPymN8Cn2jf78TINSj17tI&limit=10";
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=dc6zaTOxFJmzC&limit=10";
 
     $.ajax({
       url: queryURL,
