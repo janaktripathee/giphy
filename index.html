@@ -2,29 +2,27 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Animaltastic</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <title>Animaltastic</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo|Pangolin" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="style.css"> 
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
 </head>
-
 <body>
-
-  <div id="animal-buttons">
-
-  </div>
-
-  <form id="animal-form">
-    <label for="animal-input">Add an animal</label>
-    <input type="text" id="animal-input"><br>
-    <input id="add-animal" type="submit" value="Submit">
-  </form>
-
-  <div id="animals">
-
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="script.js"></script>
-  
+    <div id="all-buttons"></div>
+    <div>
+        <form id="animal-form">
+            <label for="animal-input">Please add animal name</label>
+            <input type="text" id="animal-input">
+            <br>
+            <input id="add-animal" type="submit" value="Submit"> </form>
+    </div>
+    <div id="presentAnimals"></div>
+    
 </body>
+
 </html>

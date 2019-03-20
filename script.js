@@ -1,61 +1,56 @@
 $(document).ready(function() {
 
-  var animals = [
-    "teacup pig", "turtle", "salamander", "capybara", "chicken",
+  var presentAnimals = [
+    "pig", "dog", "cat", "whale", "chicken",
     "bird", "ferret", "cat", "sugar glider", "chinchilla",
     "hedgehog", "hermit crab", "gerbil", "pygmy goat", "goldfish",
     "hamster", "dog", "serval", "rabbit", "frog"
   ];
 
-  function populateButtons(arrayToUse, classToAdd, areaToAddTo) {
-    $(areaToAddTo).empty();
-
-    for (var i = 0; i < arrayToUse.length; i++) {
-      var a = $("<button>");
-      a.addClass(classToAdd);
-      a.attr("data-type", arrayToUse[i]);
-      a.text(arrayToUse[i]);
-      $(areaToAddTo).append(a);
+  function showButtons(listToUse, classToAdd, AddTo) {
+    $(AddTo).empty();
+    for (var i = 0; i < listToUse.length; i++) {
+      var btn = $("<button>");
+      btn.addClass(classToAdd);
+      btn.attr("data-type", listToUse[i]);
+      btn.text(listToUse[i]);
+      $(AddTo).append(btn);
     }
 
   }
 
   $(document).on("click", ".animal-button", function() {
-    $("#animals").empty();
+    $("#presentAnimals").empty();
     $(".animal-button").removeClass("active");
     $(this).addClass("active");
-
     var type = $(this).attr("data-type");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=27S1z4Jv5SsPymN8Cn2jf78TINSj17tI&limit=12";
 
     $.ajax({
       url: queryURL,
       method: "GET"
-    })
-      .then(function(response) {
-        var results = response.data;
+    }).then(function(response) {
+        console.log(response);
+        var result = response.data;
+        for (var i = 0; i < result.length; i++) {
+          var nameDiv = $("<div class=\"animal-item\">");
 
-        for (var i = 0; i < results.length; i++) {
-          var animalDiv = $("<div class=\"animal-item\">");
-
-          var rating = results[i].rating;
+          var rating = result[i].rating;
 
           var p = $("<p>").text("Rating: " + rating);
 
-          var animated = results[i].images.fixed_height.url;
-          var still = results[i].images.fixed_height_still.url;
+          var animated = result[i].images.fixed_height.url;
+          var still = result[i].images.fixed_height_still.url;
 
-          var animalImage = $("<img>");
-          animalImage.attr("src", still);
-          animalImage.attr("data-still", still);
-          animalImage.attr("data-animate", animated);
-          animalImage.attr("data-state", "still");
-          animalImage.addClass("animal-image");
-
-          animalDiv.append(p);
-          animalDiv.append(animalImage);
-
-          $("#animals").append(animalDiv);
+          var queryImage = $("<img>");
+          queryImage.attr("src", still);
+          queryImage.attr("data-still", still);
+          queryImage.attr("data-animate", animated);
+          queryImage.attr("data-state", "still");
+          queryImage.addClass("animal-image");
+          nameDiv.append(p);
+          nameDiv.append(queryImage);
+          $("#presentAnimals").append(nameDiv);
         }
       });
   });
@@ -79,12 +74,12 @@ $(document).ready(function() {
     var newAnimal = $("input").eq(0).val();
 
     if (newAnimal.length > 2) {
-      animals.push(newAnimal);
+      presentAnimals.push(newAnimal);
     }
 
-    populateButtons(animals, "animal-button", "#animal-buttons");
+    showButtons(presentAnimals, "animal-button", "#all-buttons");
 
   });
 
-  populateButtons(animals, "animal-button", "#animal-buttons");
+  showButtons(presentAnimals, "animal-button", "#all-buttons");
 });

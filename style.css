@@ -3,19 +3,25 @@ body {
   background: #eee;
 }
 
-#animals {
-  width: 70%;
+#presentAnimals {
+  width: 80%;
 }
 
 .animal-item {
   float: left;
   padding: 10px;
 }
+.form-container{
+    display: block;
+}
 
 form {
   float: right;
   width: 30%;
   padding: 20px;
+}
+#all-buttons{
+    display: block;
 }
 
 label {
@@ -38,7 +44,7 @@ input[type="submit"] {
   font-size: 18px;
   color: #fff;
   cursor: pointer;
-  background: #659a98;
+  background: #050000;
   border: 0;
   border-radius: 5px;
   box-shadow: 2px 2px 3px #bbb;
@@ -46,9 +52,6 @@ input[type="submit"] {
 
 button:hover,
 input[type="submit"]:hover {
-  background: #334e4d;
+  background: #185173;
 }
 
-button.active {
-  background: #334e4d;
-}
